@@ -58,8 +58,8 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
-    implementation ("ai.picovoice:porcupine-android:3.0.0")
+    implementation(libs.material)
+    implementation("ai.picovoice:porcupine-android:3.0.0")
 
 
 }

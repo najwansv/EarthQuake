@@ -10,6 +10,8 @@ import androidx.core.content.ContextCompat
 import ai.picovoice.porcupine.PorcupineManager
 import ai.picovoice.porcupine.PorcupineManagerCallback
 import android.widget.TextView
+import android.content.Intent
+import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,6 +33,27 @@ class MainActivity : AppCompatActivity() {
             )
         } else {
             startWakeWordDetection()
+        }
+
+        // Set up button click listeners
+        findViewById<Button>(R.id.buttonQuakeInfo).setOnClickListener {
+            startActivity(Intent(this, QuakeInfoActivity::class.java))
+        }
+
+        findViewById<Button>(R.id.buttonSafeRoute).setOnClickListener {
+            startActivity(Intent(this, SafeRouteActivity::class.java))
+        }
+
+        findViewById<Button>(R.id.buttonEmergency).setOnClickListener {
+            startActivity(Intent(this, EmergencyActivity::class.java))
+        }
+
+        findViewById<Button>(R.id.buttonSafetyTips).setOnClickListener {
+            startActivity(Intent(this, SafetyTipsActivity::class.java))
+        }
+
+        findViewById<Button>(R.id.buttonConsult).setOnClickListener {
+            startActivity(Intent(this, ConsultActivity::class.java))
         }
     }
 
@@ -71,7 +94,7 @@ class MainActivity : AppCompatActivity() {
         // 3. Navigate to a specific screen
 
         // For demo purposes:
-        findViewById<TextView>(R.id.textView).text = "ACTIVATED!"
+//        findViewById<TextView>(R.id.textView).text = "ACTIVATED!"
     }
 
 

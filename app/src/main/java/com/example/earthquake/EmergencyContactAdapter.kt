@@ -4,15 +4,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.ImageButton
+import android.content.Intent
+import android.net.Uri
 import androidx.recyclerview.widget.RecyclerView
 
 class EmergencyContactAdapter(
-    private val contacts: List<EmergencyContact>
+    private var contacts: List<EmergencyContact>
 ) : RecyclerView.Adapter<EmergencyContactAdapter.ContactViewHolder>() {
 
     class ContactViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nameTextView: TextView = view.findViewById(R.id.contactNameTextView)
         val phoneTextView: TextView = view.findViewById(R.id.contactPhoneTextView)
+        val callButton: ImageButton = view.findViewById(R.id.callButton)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
@@ -25,6 +29,22 @@ class EmergencyContactAdapter(
         val contact = contacts[position]
         holder.nameTextView.text = contact.name
         holder.phoneTextView.text = contact.phoneNumber
+        
+        holder.callButton.setOnClickListener {
+            val intent = Intent(Intent.ACTION_DIAL).apply {
+                data = Uri.parse("tel:${contact.phoneNumber}")
+            }
+            holder.itemView.context.startActivity(intent)
+        }
+    }
+
+    fun updateContacts(newContacts: List<EmergencyContact>) {
+        this.contacts = newContacts
+        notifyDataSetChanged()
+    }
+
+    fun getContactAtPosition(position: Int): EmergencyContact {
+        return contacts[position]
     }
 
     override fun getItemCount() = contacts.size

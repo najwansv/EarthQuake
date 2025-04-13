@@ -1,7 +1,12 @@
 package com.example.earthquake
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "emergency_contacts")
 data class EmergencyContact(
     val name: String,
     val phoneNumber: String,
-    val id: Long = System.currentTimeMillis() // Simple unique ID for demonstration
+    @PrimaryKey(autoGenerate = true)
+    val id: Long = 0
 )

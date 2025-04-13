@@ -11,7 +11,10 @@ import ai.picovoice.porcupine.PorcupineManager
 import ai.picovoice.porcupine.PorcupineManagerCallback
 import android.widget.TextView
 import android.content.Intent
+import android.net.Uri
 import android.widget.Button
+import android.widget.ImageView
+import com.google.android.gms.location.LocationServices
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,11 +31,21 @@ class MainActivity : AppCompatActivity() {
 
             ActivityCompat.requestPermissions(
                 this,
-                arrayOf(Manifest.permission.RECORD_AUDIO),
-                1
+                arrayOf(Manifest.permission.RECORD_AUDIO),1
             )
         } else {
             startWakeWordDetection()
+        }
+
+        // Ask for location permission
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+            != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                2
+            )
         }
 
         // Set up button click listeners
@@ -54,6 +67,10 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.buttonConsult).setOnClickListener {
             startActivity(Intent(this, ConsultActivity::class.java))
+        }
+
+        findViewById<ImageView>(R.id.gearIcon).setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
         }
     }
 
@@ -87,6 +104,38 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun getCurrentLocationAndSend() {
+        val fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+            != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this, "Location permission not granted", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+            if (location != null) {
+                val latitude = location.latitude
+                val longitude = location.longitude
+                val timestamp = System.currentTimeMillis()
+
+                sendViaWhatsApp(latitude, longitude, timestamp)
+            } else {
+                Toast.makeText(this, "Unable to get location", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun sendViaWhatsApp(lat: Double, lon: Double, timeMillis: Long) {
+        val message = "Emergency Alert!\nLocation: https://maps.google.com/?q=$lat,$lon\nTime: ${java.util.Date(timeMillis)}"
+        val phoneNumber = "6285718010794" // Nomor WA tujuan tanpa tanda '+'
+
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse("https://wa.me/$phoneNumber?text=${Uri.encode(message)}")
+        startActivity(intent)
+    }
+
+
     private fun performAction() {
         // Example actions:
         // 1. Show earthquake information
@@ -95,6 +144,10 @@ class MainActivity : AppCompatActivity() {
 
         // For demo purposes:
 //        findViewById<TextView>(R.id.textView).text = "ACTIVATED!"
+//
+//        val intent = Intent(this, EmergencyActivity::class.java)
+//        startActivity(intent)
+        getCurrentLocationAndSend()
     }
 
 
@@ -103,10 +156,14 @@ class MainActivity : AppCompatActivity() {
 
         if (requestCode == 1 && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             startWakeWordDetection()
-        } else {
+        } else if (requestCode == 2 && grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this, "Location permission is required", Toast.LENGTH_SHORT).show()
+        }
+        else {
             Toast.makeText(this, "Microphone permission is required", Toast.LENGTH_SHORT).show()
         }
     }
+
 
     override fun onDestroy() {
         super.onDestroy()

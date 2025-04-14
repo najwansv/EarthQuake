@@ -1,9 +1,12 @@
-package com.example.earthquake
+package com.example.earthquake.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.example.earthquake.data.SafePlace
+import com.example.earthquake.repository.SafePlaceRepository
+import com.example.earthquake.database.SafePlaceDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

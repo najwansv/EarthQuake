@@ -1,6 +1,8 @@
-package com.example.earthquake
+package com.example.earthquake.repository
 
 import androidx.lifecycle.LiveData
+import com.example.earthquake.data.EmergencyContact
+import com.example.earthquake.dao.EmergencyContactDao
 
 class EmergencyContactRepository(private val emergencyContactDao: EmergencyContactDao) {
     

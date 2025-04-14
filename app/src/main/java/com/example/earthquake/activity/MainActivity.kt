@@ -1,4 +1,4 @@
-package com.example.earthquake
+package com.example.earthquake.activity
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -9,11 +9,11 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import ai.picovoice.porcupine.PorcupineManager
 import ai.picovoice.porcupine.PorcupineManagerCallback
-import android.widget.TextView
 import android.content.Intent
 import android.net.Uri
 import android.widget.Button
 import android.widget.ImageView
+import com.example.earthquake.R
 import com.google.android.gms.location.LocationServices
 
 class MainActivity : AppCompatActivity() {

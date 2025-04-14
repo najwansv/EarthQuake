@@ -1,4 +1,4 @@
-package com.example.earthquake
+package com.example.earthquake.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

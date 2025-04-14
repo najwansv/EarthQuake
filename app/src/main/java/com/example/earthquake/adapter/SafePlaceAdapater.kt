@@ -1,4 +1,4 @@
-package com.example.earthquake
+package com.example.earthquake.adapter
 
 import android.content.Intent
 import android.net.Uri
@@ -10,6 +10,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.earthquake.R
+import com.example.earthquake.data.SafePlace
 
 class SafePlaceAdapater(
     private val onItemClick: (SafePlace) -> Unit,

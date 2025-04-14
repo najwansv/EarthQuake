@@ -1,9 +1,11 @@
-package com.example.earthquake
+package com.example.earthquake.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.earthquake.data.SafePlace
+import com.example.earthquake.dao.SafePlaceDao
 
 @Database(entities = [SafePlace::class], version = 1, exportSchema = false)
 abstract class SafePlaceDatabase : RoomDatabase() {

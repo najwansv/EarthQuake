@@ -1,11 +1,12 @@
-package com.example.earthquake
+package com.example.earthquake.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.earthquake.R
 
-class SafetyTipsActivity : AppCompatActivity() {
+class QuakeInfoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_safety_tips)
+        setContentView(R.layout.activity_quake_info)
     }
 }

@@ -1,7 +1,8 @@
-package com.example.earthquake
+package com.example.earthquake.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.example.earthquake.data.EmergencyContact
 
 @Dao
 interface EmergencyContactDao {

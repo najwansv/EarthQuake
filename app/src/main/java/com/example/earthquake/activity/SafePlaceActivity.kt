@@ -1,16 +1,18 @@
-package com.example.earthquake
+package com.example.earthquake.activity
 
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.earthquake.R
+import com.example.earthquake.data.SafePlace
+import com.example.earthquake.adapter.SafePlaceAdapater
+import com.example.earthquake.viewmodel.SafePlaceViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class SafePlaceActivity : AppCompatActivity() {

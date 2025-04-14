@@ -1,13 +1,11 @@
-package com.example.earthquake
+package com.example.earthquake.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.example.earthquake.R
 
 class SettingsActivity : AppCompatActivity() {
 

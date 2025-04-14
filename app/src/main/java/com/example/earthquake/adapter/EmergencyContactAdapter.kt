@@ -1,4 +1,4 @@
-package com.example.earthquake
+package com.example.earthquake.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +8,8 @@ import android.widget.ImageButton
 import android.content.Intent
 import android.net.Uri
 import androidx.recyclerview.widget.RecyclerView
+import com.example.earthquake.data.EmergencyContact
+import com.example.earthquake.R
 
 class EmergencyContactAdapter(
     private var contacts: List<EmergencyContact>

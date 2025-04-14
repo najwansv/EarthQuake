@@ -10,11 +10,11 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.earthquake.data.EmergencyContact
-import com.example.earthquake.adapter.EmergencyContactAdapter
-import com.example.earthquake.viewmodel.EmergencyContactViewModel
 import com.example.earthquake.R
 import com.google.android.material.textfield.TextInputEditText
+import com.example.earthquake.adapter.EmergencyContactAdapter
+import com.example.earthquake.data.EmergencyContact
+import com.example.earthquake.viewmodel.EmergencyContactViewModel
 
 class EmergencyContactsActivity : AppCompatActivity() {
     

@@ -10,10 +10,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.earthquake.R
-import com.example.earthquake.data.SafePlace
-import com.example.earthquake.adapter.SafePlaceAdapater
-import com.example.earthquake.viewmodel.SafePlaceViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+
+import com.example.earthquake.adapter.SafePlaceAdapater
+import com.example.earthquake.data.SafePlace
+import com.example.earthquake.viewmodel.SafePlaceViewModel
 
 class SafePlaceActivity : AppCompatActivity() {
     private lateinit var safePlaceViewModel: SafePlaceViewModel

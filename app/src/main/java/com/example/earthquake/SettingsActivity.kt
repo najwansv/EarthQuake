@@ -27,5 +27,12 @@ class SettingsActivity : AppCompatActivity() {
             val intent = Intent(this, EmergencyContactsActivity::class.java)
             startActivity(intent)
         }
+
+        // Handle safe places card click
+        val safePlacesCard = findViewById<CardView>(R.id.safePlacesCard)
+        safePlacesCard.setOnClickListener {
+            val intent = Intent(this, SafePlaceActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

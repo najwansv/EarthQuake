@@ -77,7 +77,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/safePlaces"
+            android:id="@+id/safePlacesCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#D32F2F"
